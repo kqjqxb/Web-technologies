@@ -1,0 +1,10 @@
+test_list_seeded PASSED                               [ 11%]
+test_crud_cycle PASSED                                [ 22%]
+test_sort_and_search PASSED                           [ 33%]
+test_validation[body0] PASSED                         [ 44%]
+test_validation[body1] PASSED                         [ 55%]
+test_validation[body2] PASSED                         [ 66%]
+test_validation[body3] PASSED                         [ 77%]
+test_validation[body4] PASSED                         [ 88%]
+test_patch_empty PASSED                               [100%]
+9 passed in 0.28s
