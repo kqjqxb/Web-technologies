@@ -5,7 +5,8 @@ module.exports = function (allowedRoles) {
   return [authMiddleware, (req, res, next) => {
     const hasRole = (req.user.roles || []).some((role) => allowedRoles.includes(role));
     if (!hasRole) {
-      return res.status(403).json({ message: `Доступ заборонено: потрібна роль ${allowedRoles.join(' або ')}` });
+      const message = `Доступ заборонено: потрібна роль ${allowedRoles.join(' або ')}`;
+      return res.status(403).json({ message });
     }
     next();
   }];

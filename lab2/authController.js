@@ -69,7 +69,9 @@ class AuthController {
   // ADMIN: зміна ролей користувача
   async setRoles(req, res) {
     const errors = validationResult(req);
-    if (!errors.isEmpty()) return res.status(400).json({ message: 'Некоректні ролі', errors: errors.array() });
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ message: 'Некоректні ролі', errors: errors.array() });
+    }
     try {
       const user = await User.findByIdAndUpdate(req.params.id, { roles: req.body.roles }, { new: true });
       if (!user) return res.status(404).json({ message: 'Користувача не знайдено' });
