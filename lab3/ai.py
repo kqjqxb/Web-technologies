@@ -3,7 +3,8 @@ import httpx
 
 from config import AI_API_KEY, AI_MODEL, AI_URL, PROXY_URL
 
-SYSTEM_PROMPT = "Ти – помічник у Telegram. Відповідай коротко (до 150 слів) мовою запитання."
+SYSTEM_PROMPT = ("Ти – помічник у Telegram. Відповідай коротко (до 150 слів) мовою запитання, "
+                 "звичайним текстом без Markdown.")
 TELEGRAM_LIMIT = 4096
 
 

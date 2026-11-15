@@ -10,7 +10,7 @@ TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN", "")
 AI_PROVIDERS = {
     "groq": ("https://api.groq.com/openai/v1/chat/completions", "llama-3.3-70b-versatile"),
     "gemini": ("https://generativelanguage.googleapis.com/v1beta/openai/chat/completions",
-               "gemini-2.5-flash"),
+               "gemini-flash-lite-latest"),
 }
 AI_PROVIDER = os.getenv("AI_PROVIDER", "groq")
 AI_URL, _default_model = AI_PROVIDERS[AI_PROVIDER]
