@@ -1,0 +1,13 @@
+{
+  "name": "lab1-socketio-chat",
+  "version": "1.0.0",
+  "description": "Чат реального часу на Socket.IO з кімнатами та автоматичними повідомленнями",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "socket.io": "^4.8.1"
+  }
+}
