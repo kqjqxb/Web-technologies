@@ -1,0 +1,15 @@
+{
+  "name": "lab4-rest-crud",
+  "version": "1.0.0",
+  "description": "REST API на Node.js та Express: CRUD технологічних карт у MongoDB (варіант 11)",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "seed": "node seed.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "express-validator": "^7.2.1",
+    "mongoose": "^8.9.5"
+  }
+}

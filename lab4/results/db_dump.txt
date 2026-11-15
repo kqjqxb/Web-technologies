@@ -1,0 +1,7 @@
+tech_cards.techcards
+{"_id":"6afa35f0beb99d79c7b2d803","detail":"Вал приводний","processingType":"Токарна","duration":45,"createdAt":"2026-11-15T22:45:04.358Z","updatedAt":"2026-11-15T22:45:04.358Z"}
+{"_id":"6afa35f0beb99d79c7b2d805","detail":"Корпус редуктора","processingType":"Фрезерна","duration":120,"createdAt":"2026-11-15T22:45:04.361Z","updatedAt":"2026-11-15T22:45:04.361Z"}
+{"_id":"6afa35f0beb99d79c7b2d807","detail":"Фланець","processingType":"Свердлильна","duration":25,"createdAt":"2026-11-15T22:45:04.362Z","updatedAt":"2026-11-15T22:45:04.362Z"}
+{"_id":"6afa35f0beb99d79c7b2d809","detail":"Шестерня z=32","processingType":"Термічна","duration":180,"createdAt":"2026-11-15T22:45:04.363Z","updatedAt":"2026-11-15T22:45:04.363Z"}
+{"_id":"6afa35f0beb99d79c7b2d80b","detail":"Втулка","processingType":"Шліфувальна","duration":30,"createdAt":"2026-11-15T22:45:04.364Z","updatedAt":"2026-11-15T22:45:04.364Z"}
+

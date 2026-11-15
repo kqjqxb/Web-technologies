@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Технологічні карти</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main>
+    <h1>Технологічні карти</h1>
+
+    <form id="card-form" novalidate>
+      <input type="hidden" id="card-id">
+      <label for="detail">Деталь:</label>
+      <input id="detail" name="detail" maxlength="100" placeholder="Напр., Вал приводний">
+      <label for="processingType">Вид обробки:</label>
+      <select id="processingType" name="processingType">
+        <option value="">— оберіть —</option>
+      </select>
+      <label for="duration">Тривалість обробки, хв:</label>
+      <input id="duration" name="duration" type="number" min="1" max="10000" step="1">
+      <div class="buttons">
+        <button type="submit" class="btn" id="save-btn">Зберегти</button>
+        <button type="button" class="btn" id="reset-btn">Скинути</button>
+      </div>
+      <ul id="errors" class="errors" hidden></ul>
+    </form>
+
+    <div class="toolbar">
+      <input id="search" type="search" placeholder="Пошук за деталлю">
+      <select id="filter-type"><option value="">Усі види обробки</option></select>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>№</th>
+          <th data-sort="detail">Деталь</th>
+          <th data-sort="processingType">Вид обробки</th>
+          <th data-sort="duration">Тривалість, хв</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="cards"></tbody>
+    </table>
+    <p id="summary" class="summary"></p>
+  </main>
+  <script src="js/app.js"></script>
+</body>
+</html>
