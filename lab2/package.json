@@ -1,0 +1,17 @@
+{
+  "name": "lab2-jwt-auth",
+  "version": "1.0.0",
+  "description": "Реєстрація та авторизація користувачів за допомогою JWT з ролями USER і ADMIN",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "create-admin": "node createAdmin.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^4.21.2",
+    "express-validator": "^7.2.1",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.9.5"
+  }
+}

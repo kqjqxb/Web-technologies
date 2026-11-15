@@ -1,0 +1,9 @@
+auth_roles.roles
+{"_id":"6afa3429f2392e7ade4b88ad","value":"USER","__v":0}
+{"_id":"6afa3429f2392e7ade4b88ae","value":"ADMIN","__v":0}
+
+auth_roles.users
+{"_id":"6afa342bf2392e7ade4b88af","username":"admin","__v":0,"password":"$2a$07$9Cgp9SG6fIStibjaOl8vkeDQQ4HxS/bBXhQ0P63YeDYLOVjHkp89K","roles":["ADMIN"]}
+{"_id":"6afa342b825c4c3f5be31b77","username":"user","password":"$2a$07$UHQpNJ.cfSdBERYUsvrS4.LprfyZcNKcm//z4kRPOSQJhP3Shlqie","roles":["USER"],"__v":0}
+{"_id":"6afa342f825c4c3f5be31b87","username":"student","password":"$2a$07$5BsG2NJRR2wmaYWPv0hdMeUZx0awzuZcXpQanr4EaLP8gT1ZOHLbW","roles":["ADMIN"],"__v":0}
+

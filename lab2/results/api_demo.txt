@@ -1,0 +1,214 @@
+
+### Реєстрація користувача
+POST /auth/registration
+body: {"username":"user","password":"user1234"}
+→ 201
+{
+  "message": "Користувача успішно зареєстровано",
+  "user": {
+    "id": "6afa33506daa60589aa53309",
+    "username": "user",
+    "roles": [
+      "USER"
+    ]
+  }
+}
+
+### Повторна реєстрація з тим самим іменем
+POST /auth/registration
+body: {"username":"user","password":"user1234"}
+→ 400
+{
+  "message": "Користувач з таким іменем уже існує"
+}
+
+### Реєстрація з некоректними даними
+POST /auth/registration
+body: {"username":"ab","password":"1"}
+→ 400
+{
+  "message": "Помилка під час реєстрації",
+  "errors": [
+    {
+      "type": "field",
+      "value": "ab",
+      "msg": "Ім’я користувача: 3–30 символів (латиниця, цифри, _)",
+      "path": "username",
+      "location": "body"
+    },
+    {
+      "type": "field",
+      "value": "1",
+      "msg": "Пароль має містити від 4 до 20 символів",
+      "path": "password",
+      "location": "body"
+    }
+  ]
+}
+
+### Вхід з невірним паролем
+POST /auth/login
+body: {"username":"user","password":"wrong"}
+→ 400
+{
+  "message": "Невірне ім’я користувача або пароль"
+}
+
+### Вхід користувача user
+POST /auth/login
+body: {"username":"user","password":"user1234"}
+→ 200
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhZmEzMzUwNmRhYTYwNTg5YWE1MzMwOSIsInVzZXJuYW1lIjoidXNlciIsInJvbGVzIjpbIlVTRVIiXSwic3R1ZGVudCI6ItCb0L7QvNCw0LrRltC9INCcLiIsImdyb3VwIjoi0IbQny0zMyIsInZhcmlhbnQiOjExLCJpYXQiOjE3OTQ3ODIwMzIsImV4cCI6MTc5NDc4MjEwM30.9Ze-pS0ii_e8ww0lccKwecxnI677blUmYeNCljSK3rI",
+  "expiresIn": 71
+}
+
+header  = {"alg":"HS256","typ":"JWT"}
+payload = {"id":"6afa33506daa60589aa53309","username":"user","roles":["USER"],"student":"Ломакін М.","group":"ІП-33","variant":11,"iat":1794782032,"exp":1794782103}
+
+### Профіль без токена
+GET /auth/profile
+→ 401
+{
+  "message": "Користувач не авторизований: токен відсутній"
+}
+
+### Профіль з токеном user
+GET /auth/profile  (Authorization: Bearer …)
+→ 200
+{
+  "user": {
+    "id": "6afa33506daa60589aa53309",
+    "username": "user",
+    "roles": [
+      "USER"
+    ]
+  },
+  "token": {
+    "id": "6afa33506daa60589aa53309",
+    "username": "user",
+    "roles": [
+      "USER"
+    ],
+    "student": "Ломакін М.",
+    "group": "ІП-33",
+    "variant": 11,
+    "iat": 1794782032,
+    "exp": 1794782103,
+    "issuedAt": "2026-11-15T22:33:52.000Z",
+    "expiresAt": "2026-11-15T22:35:03.000Z"
+  }
+}
+
+### Список користувачів з токеном user (потрібна роль ADMIN)
+GET /auth/users  (Authorization: Bearer …)
+→ 403
+{
+  "message": "Доступ заборонено: потрібна роль ADMIN"
+}
+
+### Підроблений токен (змінено підпис)
+GET /auth/profile  (Authorization: Bearer …)
+→ 401
+{
+  "message": "Недійсний токен"
+}
+
+### Вхід адміністратора
+POST /auth/login
+body: {"username":"admin","password":"admin123"}
+→ 200
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhZmEzMzUwZjIzOTJlN2FkZTRiODhhYyIsInVzZXJuYW1lIjoiYWRtaW4iLCJyb2xlcyI6WyJBRE1JTiJdLCJzdHVkZW50Ijoi0JvQvtC80LDQutGW0L0g0JwuIiwiZ3JvdXAiOiLQhtCfLTMzIiwidmFyaWFudCI6MTEsImlhdCI6MTc5NDc4MjAzMiwiZXhwIjoxNzk0NzgyMTAzfQ.3V81BwiKpDxC-oeTc736UVK5HfbRw-uMY-b-WADG1C8",
+  "expiresIn": 71
+}
+
+payload = {"id":"6afa3350f2392e7ade4b88ac","username":"admin","roles":["ADMIN"],"student":"Ломакін М.","group":"ІП-33","variant":11,"iat":1794782032,"exp":1794782103}
+
+### Реєстрація user2
+POST /auth/registration
+body: {"username":"user2","password":"pass2222"}
+→ 201
+{
+  "message": "Користувача успішно зареєстровано",
+  "user": {
+    "id": "6afa33506daa60589aa53312",
+    "username": "user2",
+    "roles": [
+      "USER"
+    ]
+  }
+}
+
+### Список користувачів (ADMIN)
+GET /auth/users  (Authorization: Bearer …)
+→ 200
+[
+  {
+    "_id": "6afa3350f2392e7ade4b88ac",
+    "username": "admin",
+    "__v": 0,
+    "password": "$2a$07$L6ShyJJ0KIlyXj038OpbB.Hzy2zzCismV/iz3LdpcnkZG.fo9ED0C",
+    "roles": [
+      "ADMIN"
+    ]
+  },
+  {
+    "_id": "6afa33506daa60589aa53309",
+    "username": "user",
+    "password": "$2a$07$nwDNfVz3dmu.q1m2WC3Tou5uAxE.wZ2kBHs/Ho9r6L10lXHzhC4a6",
+    "roles": [
+      "USER"
+    ],
+    "__v": 0
+  },
+  {
+    "_id": "6afa33506daa60589aa53312",
+    "username": "user2",
+    "password": "$2a$07$VMa6kYnCG4xq492Nc3q2tOrjG9P3n2V/g5PbNwv/IYKsx.asiE0wm",
+    "roles": [
+      "USER"
+    ],
+    "__v": 0
+  }
+]
+
+### Надання ролі ADMIN користувачу user2
+PATCH /auth/users/6afa33506daa60589aa53312/roles  (Authorization: Bearer …)
+body: {"roles":["USER","ADMIN"]}
+→ 200
+{
+  "message": "Ролі змінено",
+  "user": {
+    "id": "6afa33506daa60589aa53312",
+    "username": "user2",
+    "roles": [
+      "USER",
+      "ADMIN"
+    ]
+  }
+}
+
+### Видалення user2 (ADMIN)
+DELETE /auth/users/6afa33506daa60589aa53312  (Authorization: Bearer …)
+→ 200
+{
+  "message": "Користувача видалено",
+  "user": {
+    "id": "6afa33506daa60589aa53312",
+    "username": "user2",
+    "roles": [
+      "USER",
+      "ADMIN"
+    ]
+  }
+}
+
+... очікування закінчення терміну дії токена user (71 с)
+
+### Профіль з простроченим токеном user
+GET /auth/profile  (Authorization: Bearer …)
+→ 401
+{
+  "message": "Термін дії токена минув, увійдіть повторно"
+}

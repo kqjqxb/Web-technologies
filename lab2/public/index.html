@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JWT-авторизація</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header><h1>Реєстрація та авторизація (JWT)</h1></header>
+  <main>
+    <section class="card">
+      <h2>Обліковий запис</h2>
+      <form id="auth-form">
+        <input id="username" placeholder="Ім’я користувача" autocomplete="username" required>
+        <input id="password" type="password" placeholder="Пароль" autocomplete="current-password" required>
+        <div class="row">
+          <button type="button" id="btn-register">Зареєструватись</button>
+          <button type="submit" id="btn-login">Увійти</button>
+          <button type="button" id="btn-logout" class="ghost">Вийти</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="card">
+      <h2>Токен</h2>
+      <p id="token-status" class="muted">Токен відсутній</p>
+      <pre id="token-payload"></pre>
+    </section>
+
+    <section class="card">
+      <h2>Дії</h2>
+      <div class="row">
+        <button id="btn-profile">Мій профіль (USER, ADMIN)</button>
+        <button id="btn-users">Усі користувачі (ADMIN)</button>
+      </div>
+    </section>
+
+    <section class="card wide" id="users-card" hidden>
+      <h2>Користувачі (ADMIN)</h2>
+      <table id="users-table">
+        <thead><tr><th>Ім’я</th><th>Ролі</th><th>Хеш пароля (bcrypt)</th><th>Дії</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <section class="card wide">
+      <h2>Відповідь сервера <span id="status" class="badge"></span></h2>
+      <pre id="response"></pre>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
