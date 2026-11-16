@@ -9,3 +9,4 @@
 | [ЛР3](lab3) | Створення telegram-боту з меню та запитом до AI |
 | [ЛР4](lab4) | REST API на Node.js та Express. CRUD операції в базі даних |
 | [ЛР5](lab5) | Створення власного API на Python (FastAPI) |
+| [ЛР6](lab6) | Робота з LMStudio. Створення MCP-Server та Tools. Робота з БД за допомогою MCP-Server |

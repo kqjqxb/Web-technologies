@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "tech-cards": {
+      "command": "/шлях/до/Web-technologies/lab6/.venv/bin/python",
+      "args": ["-u", "/шлях/до/Web-technologies/lab6/mcp_server.py"]
+    }
+  }
+}
